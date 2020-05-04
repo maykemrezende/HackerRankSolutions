@@ -146,5 +146,18 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             return Math.Abs(leftSum - rightSum);
         }
+
+        public static void miniMaxSum(long[] arr)
+        {
+            var sumCollection = new HashSet<long>();
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                var sum = arr.Sum() - arr[i];
+                    sumCollection.Add(sum);
+            }
+
+            Console.WriteLine("{0} {1}", sumCollection.Min(), sumCollection.Max());
+        }
     }
 }

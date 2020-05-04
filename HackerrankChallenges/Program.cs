@@ -8,9 +8,9 @@ namespace HackerrankChallenges
     {
         static void Main(string[] args)
         {
-            var list = new List<int> { 1, 2, 1, 3, 2 };
-            var camelcaseQtd = Solutions.Birthday(list, 3, 2);
-            Console.WriteLine("camelcaseQtd: {0}", camelcaseQtd);
+            //var camelcaseQtd = Solutions.miniMaxSum(new int[] { 256741038, 623958417, 467905213, 714532089, 938071625 });
+            Solutions.miniMaxSum(new long[] { 256741038, 623958417, 467905213, 714532089, 938071625 });
+            //Console.WriteLine("camelcaseQtd: {0}", camelcaseQtd);
             Console.ReadKey();
         }
     }
