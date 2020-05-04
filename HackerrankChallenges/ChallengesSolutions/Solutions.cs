@@ -108,5 +108,43 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             return count;
         }
+
+        public static int DiagonalDifference(List<List<int>> arr)
+        {
+            int i = -1, j = -1, rightSum = 0, leftSum = 0;
+
+            //summing left diagonal
+            foreach (List<int> subList in arr)
+            {
+                i++;
+                foreach (var item in subList)
+                {
+                    j++;
+
+                    if (i == j)
+                        leftSum += item;
+                }
+                j = -1;
+            }
+
+            i = arr.Count();
+            j = -1;
+
+            //summing right diagonal
+            foreach (List<int> subList in arr)
+            {
+                i--;
+                foreach (var item in subList)
+                {
+                    j++;
+
+                    if (i == j)
+                        rightSum += item;
+                }
+                j = -1;
+            }
+
+            return Math.Abs(leftSum - rightSum);
+        }
     }
 }
