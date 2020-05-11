@@ -183,5 +183,22 @@ namespace HackerrankChallenges.ChallengesSolutions
             Console.WriteLine(applesOnSamsHouse);
             Console.WriteLine(orangesOnSamsHouse);
         }
+
+        public static string kangaroo(int x1, int v1, int x2, int v2)
+        {
+            /*
+             *  x1, v1: integers, starting position and jump distance for kangaroo 1
+                x2, v2: integers, starting position and jump distance for kangaroo 2
+             */
+
+            if ((x1 < x2) && ((v1 < v2) || (v1 == v2)))
+                return "NO";
+
+            var result = (x1 - x2) % (v2 - v1);
+            if (result == 0)
+                return "YES";
+
+            return "NO";
+        }
     }
 }
