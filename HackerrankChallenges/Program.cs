@@ -8,11 +8,9 @@ namespace HackerrankChallenges
     {
         static void Main(string[] args)
         {
-            Solutions.countApplesAndOranges(7, 11, 5, 15, new int[] { -2, 2, 1 }, new int[] { 5, - 6 });
-            //var camelcaseQtd = Solutions.miniMaxSum(new int[] { 256741038, 623958417, 467905213, 714532089, 938071625 });
-            //Solutions.miniMaxSum(new long[] { 256741038, 623958417, 467905213, 714532089, 938071625 });
-            //Console.WriteLine("camelcaseQtd: {0}", camelcaseQtd);
-            //Console.ReadKey();
+            var list = new List<int> { 73, 67, 38, 33 };
+
+            var response = Solutions.gradingStudents(list);
         }
     }
 }

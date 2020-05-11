@@ -200,5 +200,34 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             return "NO";
         }
+
+        public static List<int> gradingStudents(List<int> grades)
+        {
+            return MountGrades(grades).ToList();
+        }
+
+        private static IEnumerable<int> MountGrades(List<int> grades)
+        {
+            foreach (var grade in grades)
+            {
+                if (grade < 38)
+                    yield return grade;
+                else
+                {
+                    for (int i = grade; i <= 100; i++)
+                    {
+                        if (i % 5 == 0)
+                        {
+                            if (i - grade < 3)                            
+                                yield return i;                            
+                            else                            
+                                yield return grade;
+
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
