@@ -159,5 +159,29 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             Console.WriteLine("{0} {1}", sumCollection.Min(), sumCollection.Max());
         }
+
+        public static void countApplesAndOranges(int s, int t, int a, int b, int[] apples, int[] oranges)
+        {
+            // s = starting point of Sam's house location, 
+            // t = ending location of Sam's house location, 
+            // a = location of the Apple tree
+            // b = location of the Orange tree
+
+            int[] applesDistances = new int[apples.Length];
+            int[] orangesDistances = new int[oranges.Length];
+            
+            for (int i = 0; i < apples.Length; i++)            
+                applesDistances[i] = a + apples[i];
+            
+
+            for (int i = 0; i < oranges.Length; i++)            
+                orangesDistances[i] = b + oranges[i];
+
+            var applesOnSamsHouse = applesDistances.Where(apple => apple >= s && apple <= t).Count();
+            var orangesOnSamsHouse = orangesDistances.Where(orange => orange >= s && orange <= t).Count();
+
+            Console.WriteLine(applesOnSamsHouse);
+            Console.WriteLine(orangesOnSamsHouse);
+        }
     }
 }
