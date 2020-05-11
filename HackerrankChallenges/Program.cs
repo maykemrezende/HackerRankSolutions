@@ -8,10 +8,11 @@ namespace HackerrankChallenges
     {
         static void Main(string[] args)
         {
+            PaoDeMetroSolution.PaoDeMetroAnswer(0, 0, null);
             //var camelcaseQtd = Solutions.miniMaxSum(new int[] { 256741038, 623958417, 467905213, 714532089, 938071625 });
-            Solutions.miniMaxSum(new long[] { 256741038, 623958417, 467905213, 714532089, 938071625 });
+            //Solutions.miniMaxSum(new long[] { 256741038, 623958417, 467905213, 714532089, 938071625 });
             //Console.WriteLine("camelcaseQtd: {0}", camelcaseQtd);
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }
