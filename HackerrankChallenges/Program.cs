@@ -8,9 +8,7 @@ namespace HackerrankChallenges
     {
         static void Main(string[] args)
         {
-            var list = new List<int> { 73, 67, 38, 33 };
-
-            var response = Solutions.gradingStudents(list);
+            DataStructureSolutions.RotateArray(null, 4, 2);
         }
     }
 }
