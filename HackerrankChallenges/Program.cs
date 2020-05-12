@@ -8,7 +8,7 @@ namespace HackerrankChallenges
     {
         static void Main(string[] args)
         {
-            var teste = DataStructureSolutions.matchingStrings(null, null);
+            var teste = DataStructureSolutions.insertNodeAtTail(null, 789);
         }
     }
 }

@@ -36,9 +36,27 @@ namespace HackerrankChallenges.ChallengesSolutions
         {
             while (head != null)
             {
-                Console.WriteLine(head.Data);
-                head = head.Next;
+                Console.WriteLine(head.data);
+                head = head.next;
             }                
+        }
+
+        public static SinglyLinkedListNode insertNodeAtTail(SinglyLinkedListNode head, int data)
+        {
+            head = new SinglyLinkedListNode(141, new SinglyLinkedListNode(302, new SinglyLinkedListNode(164, new SinglyLinkedListNode(530, new SinglyLinkedListNode(474,null)))));
+            var headTemp = head;
+            while (headTemp != null)
+            {
+                if (headTemp.next == null)
+                {
+                    headTemp.next = new SinglyLinkedListNode(data, null);
+                    break;
+                }
+
+                headTemp = headTemp.next;
+            }
+
+            return head;
         }
     }
 }
