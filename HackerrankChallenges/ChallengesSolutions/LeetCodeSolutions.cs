@@ -1,4 +1,8 @@
-﻿namespace HackerrankChallenges.ChallengesSolutions
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace HackerrankChallenges.ChallengesSolutions
 {
     public static class LeetCodeSolutions
     {
@@ -34,6 +38,21 @@
             }
 
             return fakeHead.next;
+        }
+
+        public static int[] TwoSum(int[] nums, int target)
+        {
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int complement = target - nums[i];
+                if (nums.Any(x => x == complement && Array.IndexOf(nums, x) != i))
+                {
+                    return new int[] { i, Array.IndexOf(nums, complement) };
+                }
+            }
+
+            throw new InvalidOperationException();
         }
     }
 }
