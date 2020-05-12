@@ -31,5 +31,14 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             return results.ToArray();
         }
+
+        static void printLinkedList(SinglyLinkedListNode head)
+        {
+            while (head != null)
+            {
+                Console.WriteLine(head.Data);
+                head = head.Next;
+            }                
+        }
     }
 }
