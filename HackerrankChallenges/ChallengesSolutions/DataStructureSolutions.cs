@@ -9,9 +9,6 @@ namespace HackerrankChallenges.ChallengesSolutions
     {
         public static void RotateArray(int[] array, int d, int n)
         {
-            d = 7;
-            array = new int[] { 1, 2, 3, 4, 5 };
-            n = array.Length;
             if (d > n)
                 d = d - n;
 
@@ -20,6 +17,19 @@ namespace HackerrankChallenges.ChallengesSolutions
             array = array.Concat(tempArr).ToArray();
 
             Console.WriteLine(string.Join(' ', array));
+        }
+
+        public static int[] matchingStrings(string[] strings, string[] queries)
+        {
+            var results = new List<int>();
+
+            foreach (var query in queries)
+            {
+                var count = strings.Where(s => s == query).ToArray().Count();
+                results.Add(count);
+            }
+
+            return results.ToArray();
         }
     }
 }

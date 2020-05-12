@@ -8,7 +8,7 @@ namespace HackerrankChallenges
     {
         static void Main(string[] args)
         {
-            DataStructureSolutions.RotateArray(null, 4, 2);
+            var teste = DataStructureSolutions.matchingStrings(null, null);
         }
     }
 }
