@@ -1,54 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace HackerrankChallenges.ChallengesSolutions
+﻿namespace HackerrankChallenges.ChallengesSolutions
 {
     public static class LeetCodeSolutions
     {
-        public static  ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+        public static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
-            var str1 = new StringBuilder();
-            var str2 = new StringBuilder();
+            var fakeHead = new ListNode(0);
+            var l3 = fakeHead;
 
-            var sum = Sum(l1, l2, str1, str2);
+            int carry = 0;
 
-            return sum;
-        }
-
-        private static ListNode Sum(ListNode l1, ListNode l2, StringBuilder str1, StringBuilder str2)
-        {
-            if (l1 is null && l2 is null)
+            while (l1 != null || l2 != null)
             {
-                str1.ToString().Reverse();
-                return ReturnNew(, str2.ToString().Reverse().ToString());
+                var l1Val = l1 != null ? l1.val : 0;
+                var l2Val = l2 != null ? l2.val : 0;
+
+                var currentSum = l1Val + l2Val + carry;
+                carry = currentSum / 10;
+                var lastDigit = currentSum % 10;               
+
+                var newNode = new ListNode(lastDigit);
+                l3.next = newNode;
+
+                if (l1 != null) l1 = l1.next;
+                if (l2 != null) l2 = l2.next;
+                l3 = l3.next;
             }
 
-            str1.Append(l1.val);
-            str2.Append(l2.val);
-
-            l1 = l1.next;
-            l2 = l2.next;            
-
-            return Sum(l1, l2, str1, str2);
-        }
-
-        private static ListNode ReturnNew(string str1, string str2)
-        {
-            var sum = Convert.ToInt32(str1) + Convert.ToInt32(str2);
-            var sumString = sum.ToString();
-            var firstNode = new ListNode(sumString[0]);
-            var nextNode = firstNode;
-            int i = 1;
-
-            while (nextNode != null)
+            if (carry > 0)
             {
-                var toAdd = new ListNode(sumString[i]);
-                nextNode.next = toAdd;
+                var newNodeForCarry = new ListNode(carry);
+                l3.next = newNodeForCarry;
+                l3 = l3.next;
             }
 
-            return firstNode;
+            return fakeHead.next;
         }
     }
 }
