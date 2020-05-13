@@ -8,7 +8,7 @@ namespace HackerrankChallenges
     {
         static void Main(string[] args)
         {
-            var teste = LeetCodeSolutions.TwoSum(new int[] { 3,2,4 }, 6);
+            var teste = LeetCodeSolutions.MyAtoiWithoutRegex("       -42");
         }
     }
 }

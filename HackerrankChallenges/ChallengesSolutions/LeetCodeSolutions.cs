@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace HackerrankChallenges.ChallengesSolutions
 {
@@ -53,6 +54,80 @@ namespace HackerrankChallenges.ChallengesSolutions
             }
 
             throw new InvalidOperationException();
+        }
+
+        public static int MyAtoi(string str)
+        {
+            str = str.Trim();
+            if (str[0] == '-' && char.IsDigit(str[1]))            
+                return CheckDigit(str);
+            else if (char.IsDigit(str[0]))
+                return CheckDigit(str);
+
+            return 0;
+        }
+
+        private static int CheckDigit(string str)
+        {
+            var regex = new Regex("[^-0-9]");
+            var result = regex.Replace(str, "");
+
+            var number = Convert.ToInt64(result);
+
+            if (number < int.MinValue)
+                return int.MinValue;
+
+            if (number > int.MaxValue)
+                return int.MaxValue;
+
+            return (int)number;
+        }
+
+        public static int MyAtoiWithoutRegex(string str)
+        {
+            str = str.Trim();
+
+            if (string.IsNullOrEmpty(str))
+                return 0;
+
+             if (char.IsDigit(str[0]))
+                return CheckDigitWithouRegex(str, 0);
+            else if (char.IsLetter(str[0]) is false)
+                return CheckDigitWithouRegex(str, 1);
+
+            return 0;
+        }
+
+        private static int CheckDigitWithouRegex(string str, int indexToStart)
+        {
+            int substringStartIndex = indexToStart;
+            int substringFinalIndex = 0;
+                       
+            for (int i = substringStartIndex; i < str.Length; i++)
+            {
+                if (char.IsDigit(str[i]))
+                    substringFinalIndex++;
+                else
+                    break;
+            }
+
+            if (substringFinalIndex > 0)
+            {
+                var number = Convert.ToInt64(str.Substring(substringStartIndex, substringFinalIndex));
+
+                if (str[0] == '-')
+                    number *= -1;
+
+                if (number < int.MinValue)
+                    return int.MinValue;
+
+                if (number > int.MaxValue)
+                    return int.MaxValue;
+
+                return (int)number;
+            }
+
+            return 0;
         }
     }
 }
