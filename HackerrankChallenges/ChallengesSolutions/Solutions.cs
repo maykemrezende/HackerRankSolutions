@@ -251,5 +251,31 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             return pairs;
         }
+
+        public static string encryption(string s)
+        {
+            var stringWithoutSpaces = s.Replace(" ", "");
+            var root = Math.Sqrt(stringWithoutSpaces.Length);
+            var columns = Convert.ToInt32(Math.Floor(root));
+            var rows = Convert.ToInt32(Math.Ceiling(root));
+
+            if (rows >= root) 
+                columns = rows; 
+            else 
+                columns = rows + 1;
+
+            var builder = new StringBuilder();
+
+            for (int i = 0; i < columns; i++)
+            {
+                for (int j = i; j < stringWithoutSpaces.Length; j+=columns)
+                    builder.Append(stringWithoutSpaces[j]);
+
+                
+                builder.Append(" ");
+            }
+
+            return builder.ToString();
+        }
     }
 }
