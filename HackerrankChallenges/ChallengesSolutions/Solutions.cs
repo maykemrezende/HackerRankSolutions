@@ -277,5 +277,46 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             return builder.ToString();
         }
+
+        // Complete the insertionSort1 function below.
+        public static void insertionSort1(int n, int[] arr)
+        {
+            var element = arr[n - 1];
+            var inserted = false;
+            for (int i=n - 2;i >= 0; i--)
+            {
+                if (inserted && arr[i+1] < arr[i])
+                {
+                    var aux = arr[i + 1];
+                    arr[i + 1] = arr[i];
+                    arr[i] = aux;
+                    Console.WriteLine(string.Join(" ", arr));
+                }
+                else if (inserted && arr[i + 1] > arr[i])                
+                    break;
+                else
+                {
+                    if (arr[i] > element)
+                    {
+                        arr[i + 1] = arr[i];
+                        Console.WriteLine(string.Join(" ", arr));
+                    }
+                    else
+
+                    if (arr[i] < element)
+                    {
+                        arr[i + 1] = element;
+                        inserted = true;
+                        Console.WriteLine(string.Join(" ", arr));
+                    }
+                }
+
+                if (i == 0 && inserted == false)
+                {
+                    arr[0] = element;
+                    Console.WriteLine(string.Join(" ", arr));
+                }
+            }
+        }
     }
 }
