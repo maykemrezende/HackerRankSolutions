@@ -372,7 +372,7 @@ namespace HackerrankChallenges.ChallengesSolutions
             return shifts;
         }
 
-        static int[] countingSort(int[] arr)
+        public static int[] countingSort1(int[] arr)
         {
             int[] appearances = new int[100];
             int count = 0;
@@ -389,6 +389,40 @@ namespace HackerrankChallenges.ChallengesSolutions
                 count = 0;
             }
             return appearances;
+        }
+
+        public static int[] countingSort2(int[] arr)
+        {
+            int length = arr.Length;
+
+            int[] returningArray = new int[length];
+
+            //new counting array to stores the count of each unique number in the arr array
+            int[] count = new int[100];
+            for (int i = 0; i < 100; ++i)            
+                count[i] = 0;
+            
+            for (int i = 0; i < length; ++i)            
+                ++count[arr[i]];
+            
+
+            //change count[i] so that count[i] now contains actual position of this character in the returning array.
+            for (int i = 1; i <= 99; ++i)            
+                count[i] += count[i - 1];
+
+
+            // construct the returning array. We have to do it in a reverse order to make the sorting algorithm stable
+            for (int i = length - 1; i >= 0; i--)
+            {
+                returningArray[count[arr[i]] - 1] = arr[i];
+                --count[arr[i]];
+            }
+
+            //transfer the returning array to the received array.
+            for (int i = 0; i < length; ++i)            
+                arr[i] = returningArray[i];           
+
+            return returningArray;
         }
     }
 }
