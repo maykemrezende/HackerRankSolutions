@@ -371,5 +371,24 @@ namespace HackerrankChallenges.ChallengesSolutions
             
             return shifts;
         }
+
+        static int[] countingSort(int[] arr)
+        {
+            int[] appearances = new int[100];
+            int count = 0;
+            
+            for (int i = 0; i < appearances.Length; i++)
+            {
+                for (int j = 0; j < arr.Length; j++)
+                {
+                    if (i == arr[j])
+                        count++;
+                }
+
+                appearances[i] = count;
+                count = 0;
+            }
+            return appearances;
+        }
     }
 }
