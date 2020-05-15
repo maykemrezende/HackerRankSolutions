@@ -277,5 +277,152 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             return builder.ToString();
         }
+
+        // Complete the insertionSort1 function below.
+        public static void insertionSort1(int n, int[] arr)
+        {
+            var element = arr[n - 1];
+            var inserted = false;
+            for (int i=n - 2;i >= 0; i--)
+            {
+                if (inserted && arr[i+1] < arr[i])
+                {
+                    var aux = arr[i + 1];
+                    arr[i + 1] = arr[i];
+                    arr[i] = aux;
+                    Console.WriteLine(string.Join(" ", arr));
+                }
+                else if (inserted && arr[i + 1] > arr[i])                
+                    break;
+                else
+                {
+                    if (arr[i] > element)
+                    {
+                        arr[i + 1] = arr[i];
+                        Console.WriteLine(string.Join(" ", arr));
+                    }
+                    else
+
+                    if (arr[i] < element)
+                    {
+                        arr[i + 1] = element;
+                        inserted = true;
+                        Console.WriteLine(string.Join(" ", arr));
+                    }
+                }
+
+                if (i == 0 && inserted == false)
+                {
+                    arr[0] = element;
+                    Console.WriteLine(string.Join(" ", arr));
+                }
+            }
+        }
+
+        public static void insertionSort(int[] A)
+        {
+            int n = A.Length, i, j;
+            int val = 0;
+            var switched = false;
+            for (i = 1; i < n; i++)
+            {
+                val = A[i];
+                switched = false;
+                for (j = i - 1; j >= 0 && switched != true;)
+                {
+                    if (val < A[j])
+                    {
+                        A[j + 1] = A[j];
+                        j--;
+                        A[j + 1] = val;
+                        shifts++;
+                    }
+                    else                    
+                        switched = true;                        
+                    
+                }
+            }
+        }
+
+        public static int runningTime(int[] arr)
+        {
+            int n = arr.Length, i, j;
+            int val = 0;
+            var switched = false;
+            var shifts = 0;
+            for (i = 1; i < n; i++)
+            {
+                val = arr[i];
+                switched = false;
+                for (j = i - 1; j >= 0 && switched != true;)
+                {
+                    if (val < arr[j])
+                    {
+                        arr[j + 1] = arr[j];
+                        j--;
+                        arr[j + 1] = val;
+                        shifts++;
+                    }
+                    else
+                        switched = true;
+
+                }
+            }
+            
+            return shifts;
+        }
+
+        public static int[] countingSort1(int[] arr)
+        {
+            int[] appearances = new int[100];
+            int count = 0;
+            
+            for (int i = 0; i < appearances.Length; i++)
+            {
+                for (int j = 0; j < arr.Length; j++)
+                {
+                    if (i == arr[j])
+                        count++;
+                }
+
+                appearances[i] = count;
+                count = 0;
+            }
+            return appearances;
+        }
+
+        public static int[] countingSort2(int[] arr)
+        {
+            int length = arr.Length;
+
+            int[] returningArray = new int[length];
+
+            //new counting array to stores the count of each unique number in the arr array
+            int[] count = new int[100];
+            for (int i = 0; i < 100; ++i)            
+                count[i] = 0;
+            
+            for (int i = 0; i < length; ++i)            
+                ++count[arr[i]];
+            
+
+            //change count[i] so that count[i] now contains actual position of this character in the returning array.
+            for (int i = 1; i <= 99; ++i)            
+                count[i] += count[i - 1];
+
+
+            // construct the returning array. We have to do it in a reverse order to make the sorting algorithm stable
+            for (int i = length - 1; i >= 0; i--)
+            {
+                returningArray[count[arr[i]] - 1] = arr[i];
+                --count[arr[i]];
+            }
+
+            //transfer the returning array to the received array.
+            for (int i = 0; i < length; ++i)            
+                arr[i] = returningArray[i];           
+
+            return returningArray;
+        }
     }
 }
