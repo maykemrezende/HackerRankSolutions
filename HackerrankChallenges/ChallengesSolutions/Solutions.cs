@@ -318,5 +318,58 @@ namespace HackerrankChallenges.ChallengesSolutions
                 }
             }
         }
+
+        public static void insertionSort(int[] A)
+        {
+            int n = A.Length, i, j;
+            int val = 0;
+            var switched = false;
+            for (i = 1; i < n; i++)
+            {
+                val = A[i];
+                switched = false;
+                for (j = i - 1; j >= 0 && switched != true;)
+                {
+                    if (val < A[j])
+                    {
+                        A[j + 1] = A[j];
+                        j--;
+                        A[j + 1] = val;
+                        shifts++;
+                    }
+                    else                    
+                        switched = true;                        
+                    
+                }
+            }
+        }
+
+        public static int runningTime(int[] arr)
+        {
+            int n = arr.Length, i, j;
+            int val = 0;
+            var switched = false;
+            var shifts = 0;
+            for (i = 1; i < n; i++)
+            {
+                val = arr[i];
+                switched = false;
+                for (j = i - 1; j >= 0 && switched != true;)
+                {
+                    if (val < arr[j])
+                    {
+                        arr[j + 1] = arr[j];
+                        j--;
+                        arr[j + 1] = val;
+                        shifts++;
+                    }
+                    else
+                        switched = true;
+
+                }
+            }
+            
+            return shifts;
+        }
     }
 }
