@@ -8,10 +8,10 @@ namespace HackerrankChallenges.ChallengesSolutions
 {
     static class Solutions
     {
-            
+
         public static int SquaresBestSolution(int a, int b)
         => (int)Math.Floor(Math.Sqrt(b)) - (int)Math.Ceiling(Math.Sqrt(a)) + 1;
-        
+
 
         public static void extraLongFactorials(int n)
         {
@@ -33,7 +33,7 @@ namespace HackerrankChallenges.ChallengesSolutions
             {
                 if (s.Substring(i - 1, 1) == s.Substring(i, 1))
                 {
-                    s = s.Remove(i-1, 2);
+                    s = s.Remove(i - 1, 2);
                     i = 0;
                 }
             }
@@ -49,7 +49,7 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             foreach (char c in s)
             {
-                if (char.IsUpper(c))                
+                if (char.IsUpper(c))
                     qtd++;
             }
 
@@ -154,7 +154,7 @@ namespace HackerrankChallenges.ChallengesSolutions
             for (int i = 0; i < arr.Length; i++)
             {
                 var sum = arr.Sum() - arr[i];
-                    sumCollection.Add(sum);
+                sumCollection.Add(sum);
             }
 
             Console.WriteLine("{0} {1}", sumCollection.Min(), sumCollection.Max());
@@ -169,12 +169,12 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             int[] applesDistances = new int[apples.Length];
             int[] orangesDistances = new int[oranges.Length];
-            
-            for (int i = 0; i < apples.Length; i++)            
-                applesDistances[i] = a + apples[i];
-            
 
-            for (int i = 0; i < oranges.Length; i++)            
+            for (int i = 0; i < apples.Length; i++)
+                applesDistances[i] = a + apples[i];
+
+
+            for (int i = 0; i < oranges.Length; i++)
                 orangesDistances[i] = b + oranges[i];
 
             var applesOnSamsHouse = applesDistances.Where(apple => apple >= s && apple <= t).Count();
@@ -218,9 +218,9 @@ namespace HackerrankChallenges.ChallengesSolutions
                     {
                         if (i % 5 == 0)
                         {
-                            if (i - grade < 3)                            
-                                yield return i;                            
-                            else                            
+                            if (i - grade < 3)
+                                yield return i;
+                            else
                                 yield return grade;
 
                             break;
@@ -237,7 +237,7 @@ namespace HackerrankChallenges.ChallengesSolutions
                 ar: an array of integers
                 k: the integer to divide the pair sum by
              */
-             
+
             int pairs = 0;
 
             for (int i = 0; i < n; i++)
@@ -246,7 +246,7 @@ namespace HackerrankChallenges.ChallengesSolutions
                 {
                     if ((ar[i] + ar[j]) % k == 0)
                         pairs++;
-                } 
+                }
             }
 
             return pairs;
@@ -259,19 +259,19 @@ namespace HackerrankChallenges.ChallengesSolutions
             var columns = Convert.ToInt32(Math.Floor(root));
             var rows = Convert.ToInt32(Math.Ceiling(root));
 
-            if (rows >= root) 
-                columns = rows; 
-            else 
+            if (rows >= root)
+                columns = rows;
+            else
                 columns = rows + 1;
 
             var builder = new StringBuilder();
 
             for (int i = 0; i < columns; i++)
             {
-                for (int j = i; j < stringWithoutSpaces.Length; j+=columns)
+                for (int j = i; j < stringWithoutSpaces.Length; j += columns)
                     builder.Append(stringWithoutSpaces[j]);
 
-                
+
                 builder.Append(" ");
             }
 
@@ -283,16 +283,16 @@ namespace HackerrankChallenges.ChallengesSolutions
         {
             var element = arr[n - 1];
             var inserted = false;
-            for (int i=n - 2;i >= 0; i--)
+            for (int i = n - 2; i >= 0; i--)
             {
-                if (inserted && arr[i+1] < arr[i])
+                if (inserted && arr[i + 1] < arr[i])
                 {
                     var aux = arr[i + 1];
                     arr[i + 1] = arr[i];
                     arr[i] = aux;
                     Console.WriteLine(string.Join(" ", arr));
                 }
-                else if (inserted && arr[i + 1] > arr[i])                
+                else if (inserted && arr[i + 1] > arr[i])
                     break;
                 else
                 {
@@ -335,11 +335,10 @@ namespace HackerrankChallenges.ChallengesSolutions
                         A[j + 1] = A[j];
                         j--;
                         A[j + 1] = val;
-                        shifts++;
                     }
-                    else                    
-                        switched = true;                        
-                    
+                    else
+                        switched = true;
+
                 }
             }
         }
@@ -368,7 +367,7 @@ namespace HackerrankChallenges.ChallengesSolutions
 
                 }
             }
-            
+
             return shifts;
         }
 
@@ -376,7 +375,7 @@ namespace HackerrankChallenges.ChallengesSolutions
         {
             int[] appearances = new int[100];
             int count = 0;
-            
+
             for (int i = 0; i < appearances.Length; i++)
             {
                 for (int j = 0; j < arr.Length; j++)
@@ -399,15 +398,15 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             //new counting array to stores the count of each unique number in the arr array
             int[] count = new int[100];
-            for (int i = 0; i < 100; ++i)            
+            for (int i = 0; i < 100; ++i)
                 count[i] = 0;
-            
-            for (int i = 0; i < length; ++i)            
+
+            for (int i = 0; i < length; ++i)
                 ++count[arr[i]];
-            
+
 
             //change count[i] so that count[i] now contains actual position of this character in the returning array.
-            for (int i = 1; i <= 99; ++i)            
+            for (int i = 1; i <= 99; ++i)
                 count[i] += count[i - 1];
 
 
@@ -419,10 +418,87 @@ namespace HackerrankChallenges.ChallengesSolutions
             }
 
             //transfer the returning array to the received array.
-            for (int i = 0; i < length; ++i)            
-                arr[i] = returningArray[i];           
+            for (int i = 0; i < length; ++i)
+                arr[i] = returningArray[i];
 
             return returningArray;
         }
+
+        public static int[] closestNumbers(int[] arr)
+        {
+            var arrSorted = arr.OrderBy(x => x).ToArray();
+            var smallestDifference = long.MaxValue;
+            int arrLength = arrSorted.Length;
+
+            for (int i = 0; i < arrLength; i++)
+            {
+                for (int j = 1; j < arrLength; j++)
+                {
+                    var difference = arrSorted[j] - arrSorted[i];
+                    if (difference < smallestDifference)
+                        smallestDifference = difference;
+                }
+            }
+
+            return null;
+        }
+
+        private static int[] InsertionSort(int[] arr)
+        {
+            int n = arr.Length, i, j;
+            int val = 0;
+            var switched = false;
+            var shifts = 0;
+            for (i = 1; i < n; i++)
+            {
+                val = arr[i];
+                switched = false;
+                for (j = i - 1; j >= 0 && switched != true;)
+                {
+                    if (val < arr[j])
+                    {
+                        arr[j + 1] = arr[j];
+                        j--;
+                        arr[j + 1] = val;
+                        shifts++;
+                    }
+                    else
+                        switched = true;
+
+                }
+            }
+
+            return arr;
+        }
+
+        public static string ReverseString(string word)
+        {
+            char[] chars = word.ToCharArray();
+            for (int i = 0; i < word.Length / 2; i++)
+            {
+                var begin = chars[i];
+                var end = chars[word.Length - i - 1];
+                chars[i] = end;
+                chars[word.Length - i - 1] = begin;
+            }
+            var sb = new StringBuilder();
+            sb.Append(chars);
+            return sb.ToString();
+        }
+
+        public static bool ArmstrongNumber(int number)
+        {
+            int i = 10;
+            int res = 0;
+            int newNum = number;
+            while (newNum > 0)
+            {
+                res += (int)Math.Pow(newNum % 10, 3);
+                newNum = number / i;
+                i = i * 10;
+            }
+            return res == number;
+        }
     }
+        
 }
