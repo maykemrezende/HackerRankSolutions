@@ -69,5 +69,53 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             return newHead;
         }
+
+        public static SinglyLinkedListNode insertNodeAtPosition(SinglyLinkedListNode head, int data, int position)
+        {
+            var newElement = new SinglyLinkedListNode(data, null);
+            if (head == null) return newElement;
+            if (position == 0) return newElement.next = head;
+
+            var currentPosition = 0;
+            var tempHead = head;
+
+            while (currentPosition < position - 1 && head.next != null)
+            {
+                head = head.next;
+                currentPosition++;
+            }
+
+            var nodeAtPosition = head.next;
+            head.next = newElement;
+            head = head.next;
+            head.next = nodeAtPosition;
+
+            return tempHead;
+        }
+
+        public static SinglyLinkedListNode deleteNode(SinglyLinkedListNode head, int position)
+        {
+            if (head == null || position == 0) return null;
+
+            var currentPosition = 0;
+            var currentNode = head;
+            var previous = default(SinglyLinkedListNode);
+
+            while (currentNode.next != null)
+            {
+                previous = currentNode;
+                currentNode = currentNode.next;
+
+                if (currentPosition == position - 1)
+                {
+                    previous.next = currentNode.next;
+                    break;
+                }
+
+                currentPosition++;
+            }
+
+            return head;
+        }
     }
 }
