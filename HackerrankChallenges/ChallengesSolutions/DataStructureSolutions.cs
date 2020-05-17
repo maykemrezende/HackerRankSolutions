@@ -117,5 +117,23 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             return head;
         }
+
+        public static void reversePrint(SinglyLinkedListNode head)
+        {
+            var list = new List<int>();
+            var currNode = head;
+
+            while (currNode != null)
+            {
+                list.Add(currNode.data);
+                currNode = currNode.next;
+            }
+
+            list.Reverse();
+
+            list.ForEach(l => Console.WriteLine(l));
+
+            
+        }
     }
 }
