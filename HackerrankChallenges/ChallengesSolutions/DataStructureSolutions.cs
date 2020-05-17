@@ -59,5 +59,15 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             return head;
         }
+
+        public static SinglyLinkedListNode insertNodeAtHead(SinglyLinkedListNode llist, int data)
+        {
+            var newHead = new SinglyLinkedListNode(data, null);
+            if (llist == null) return newHead;
+
+            newHead.next = llist;
+
+            return newHead;
+        }
     }
 }
