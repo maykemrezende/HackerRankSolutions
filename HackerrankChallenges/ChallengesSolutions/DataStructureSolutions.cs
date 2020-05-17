@@ -43,7 +43,8 @@ namespace HackerrankChallenges.ChallengesSolutions
 
         public static SinglyLinkedListNode insertNodeAtTail(SinglyLinkedListNode head, int data)
         {
-            head = new SinglyLinkedListNode(141, new SinglyLinkedListNode(302, new SinglyLinkedListNode(164, new SinglyLinkedListNode(530, new SinglyLinkedListNode(474,null)))));
+            if (head == null) return new SinglyLinkedListNode(data, null);
+
             var headTemp = head;
             while (headTemp != null)
             {
