@@ -422,26 +422,7 @@ namespace HackerrankChallenges.ChallengesSolutions
                 arr[i] = returningArray[i];
 
             return returningArray;
-        }
-
-        public static int[] closestNumbers(int[] arr)
-        {
-            var arrSorted = arr.OrderBy(x => x).ToArray();
-            var smallestDifference = long.MaxValue;
-            int arrLength = arrSorted.Length;
-
-            for (int i = 0; i < arrLength; i++)
-            {
-                for (int j = 1; j < arrLength; j++)
-                {
-                    var difference = arrSorted[j] - arrSorted[i];
-                    if (difference < smallestDifference)
-                        smallestDifference = difference;
-                }
-            }
-
-            return null;
-        }
+        }        
 
         private static int[] InsertionSort(int[] arr)
         {
