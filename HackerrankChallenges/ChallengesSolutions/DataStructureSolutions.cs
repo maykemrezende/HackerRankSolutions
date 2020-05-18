@@ -131,9 +131,87 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             list.Reverse();
 
-            list.ForEach(l => Console.WriteLine(l));
+            list.ForEach(l => Console.WriteLine(l));            
+        }
 
-            
+        public static SinglyLinkedListNode reverse(SinglyLinkedListNode head)
+        {
+            SinglyLinkedListNode prev = null;
+            SinglyLinkedListNode current = head;
+            SinglyLinkedListNode next = null;
+            while (current != null)
+            {
+                next = current.next;
+                current.next = prev;
+                prev = current;
+                current = next;
+            }
+            head = prev;
+            return head;
+        }
+
+        public static int getNode(SinglyLinkedListNode head, int positionFromTail)
+        {
+            //if (head == null) return 0;
+            //head = reverse(head);
+            //if (positiio)
+
+            //var position = 999;
+            //var currPosition = head.next;
+
+            //while(currPosition != null)
+            //{
+            //    if (position == positionFromTail)
+            //        return currPosition.data;
+
+            //    position--;
+            //    currPosition = currPosition.next;
+            //}
+
+            return 0;
+        }
+
+        public static int[] cellCompete(int[] states, int days)
+        {
+            for (int i = 1; i <= days; i++)
+            {
+                int[] result = new int[states.Length];
+                for (int cellIndex = 0; cellIndex < states.Length; cellIndex++)
+                {
+                    // if first cell, 0 value is assumed. Otherwise we get the previous cell value
+                    var left = cellIndex == 0 ? 0 : states[cellIndex - 1];
+
+                    // if last cell, 0 value is assumed. Otherwise we get the nexr cell value
+                    var right = cellIndex == states.Length -1 ? 0 : states[cellIndex + 1];
+
+                    result[cellIndex] = left == right ? 0 : 1;
+                }
+                states = result;
+            }
+
+            return states;
+        }
+
+        public static int generalizedGCD(int num, int[] arr)
+        {
+            int result = arr[0];
+            for (int i = 1; i < num; i++)
+            {
+                result = gcd(arr[i], result);
+
+                if (result == 1)
+                    return 1;
+            }
+
+            return result;
+        }
+
+        private static int gcd(int a, int b)
+        {
+            if (a == 0)
+                return b;
+
+            return gcd(b % a, a);
         }
     }
 }
