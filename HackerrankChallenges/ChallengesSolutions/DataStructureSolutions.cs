@@ -213,5 +213,27 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             return gcd(b % a, a);
         }
+
+        private static int getLCM(int a, int b)
+        {
+            int multiple;
+            multiple = (a > b) ? a : b;
+            while (true)
+            {
+                if (multiple % a == 0 && multiple % b == 0)
+                    return multiple;
+                multiple++;
+            }
+        }
+
+        public static int getLCMArray(int[] arr, int n)
+        {
+            int lcm = getLCM(arr[0], arr[1]);
+            for (int i = 2; i < n; i++)
+            {
+                lcm = getLCM(lcm, arr[i]);
+            }
+            return lcm;
+        }
     }
 }
