@@ -191,49 +191,5 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             return states;
         }
-
-        public static int generalizedGCD(int num, int[] arr)
-        {
-            int result = arr[0];
-            for (int i = 1; i < num; i++)
-            {
-                result = gcd(arr[i], result);
-
-                if (result == 1)
-                    return 1;
-            }
-
-            return result;
-        }
-
-        private static int gcd(int a, int b)
-        {
-            if (a == 0)
-                return b;
-
-            return gcd(b % a, a);
-        }
-
-        private static int getLCM(int a, int b)
-        {
-            int multiple;
-            multiple = (a > b) ? a : b;
-            while (true)
-            {
-                if (multiple % a == 0 && multiple % b == 0)
-                    return multiple;
-                multiple++;
-            }
-        }
-
-        public static int getLCMArray(int[] arr, int n)
-        {
-            int lcm = getLCM(arr[0], arr[1]);
-            for (int i = 2; i < n; i++)
-            {
-                lcm = getLCM(lcm, arr[i]);
-            }
-            return lcm;
-        }
     }
 }
