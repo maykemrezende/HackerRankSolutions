@@ -222,9 +222,9 @@ namespace HackerrankChallenges.ChallengesSolutions
             var rightHeight = HeightOfBST(node.Right);
 
             if (leftHeight > rightHeight)
-                return leftHeight++;
-
-            return rightHeight++;
+                return leftHeight + 1;
+            else
+                return rightHeight + 1;
         }
     }
 }
