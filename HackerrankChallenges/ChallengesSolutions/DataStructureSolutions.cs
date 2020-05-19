@@ -212,5 +212,13 @@ namespace HackerrankChallenges.ChallengesSolutions
 
             return true;
         }
+
+        public static int HeightOfBST(Node node)
+        {
+            if (node == null)
+                return 0;
+
+            return 1 + Math.Max(HeightOfBST(node.Left), HeightOfBST(node.Right));
+        }
     }
 }
