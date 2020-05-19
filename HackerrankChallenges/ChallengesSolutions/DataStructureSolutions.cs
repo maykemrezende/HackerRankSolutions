@@ -218,7 +218,13 @@ namespace HackerrankChallenges.ChallengesSolutions
             if (node == null)
                 return 0;
 
-            return 1 + Math.Max(HeightOfBST(node.Left), HeightOfBST(node.Right));
+            var leftHeight = HeightOfBST(node.Left);
+            var rightHeight = HeightOfBST(node.Right);
+
+            if (leftHeight > rightHeight)
+                return leftHeight++;
+
+            return rightHeight++;
         }
     }
 }
