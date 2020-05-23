@@ -12,8 +12,8 @@ namespace ChallengesTests
         [Fact]
         public void Testa()
         {
-            var firstDay = new List<int>() { 3,1,10,11 };
-            var lastDay = new List<int>() { 3,11,10,11};
+            var firstDay = new List<int>() { 3,3,4,4 };
+            var lastDay = new List<int>() { 3,1,2,2};
 
             //for (int i = 0; i < 1739; i++)
             //    firstDay.Add(new Faker().Random.Number());

@@ -11,8 +11,12 @@ namespace HackerrankChallenges.ChallengesSolutions
             if (firstDay.Count == 0 || lastDay.Count == 0) return 0;
             if (firstDay.Count != lastDay.Count) return 0;
 
-            var investors = firstDay.Count;
             var meetingsScheduled = new HashSet<int>();
+
+            meetingsScheduled.Add(firstDay[0]);
+
+            firstDay.RemoveAt(0);
+            lastDay.RemoveAt(0);
 
             var list = SortByPriority(firstDay, lastDay);
 
