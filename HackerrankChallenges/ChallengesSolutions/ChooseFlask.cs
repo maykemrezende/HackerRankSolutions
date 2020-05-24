@@ -1,8 +1,6 @@
-﻿using System;
-using System.Buffers;
+﻿using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace HackerrankChallenges.ChallengesSolutions
 {
@@ -10,9 +8,6 @@ namespace HackerrankChallenges.ChallengesSolutions
     {
         public static int Solution(List<int> requirements, int flaskTypes, List<List<int>> markings)
         {
-            if (requirements.Count == 0) return -1;
-            if (markings.Count == 0) return -1;
-
             var requiLength = requirements.Count;
             var indexToReturn = -1;
             var sumOfMarking = 0L;
@@ -20,7 +15,7 @@ namespace HackerrankChallenges.ChallengesSolutions
             var j = 0;
             var requirementsUsedQtd = 0;
             var wastes = 0L;
-            var markingsArray = markings.ToArray();
+            var markingsArray = markings.Select(Enumerable.ToArray).ToArray();
             var requirementsArray = requirements.ToArray();
 
             requirementsArray = CountingSort(requirementsArray);

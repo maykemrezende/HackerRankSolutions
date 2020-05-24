@@ -8,21 +8,13 @@ namespace HackerrankChallenges.ChallengesSolutions
     {
         public static int countMeetings(List<int> firstDay, List<int> lastDay)
         {
-            if (firstDay.Count == 0 || lastDay.Count == 0) return 0;
-            if (firstDay.Count != lastDay.Count) return 0;
-
             var meetingsScheduled = new HashSet<int>();
 
-            meetingsScheduled.Add(firstDay[0]);
+            var investorsByPriority = SortByPriority(firstDay, lastDay);
 
-            firstDay.RemoveAt(0);
-            lastDay.RemoveAt(0);
-
-            var list = SortByPriority(firstDay, lastDay);
-
-            for (int investor = 0; investor < list.Count; investor++)
+            for (int investor = 0; investor < investorsByPriority.Count; investor++)
             {
-                var indexInvestor = list[investor].investorIndex;
+                var indexInvestor = investorsByPriority[investor].investorIndex;
                 var firstDayOfInvestor = firstDay[indexInvestor];
                 var lastDayOfInvestor = lastDay[indexInvestor];
 
@@ -59,6 +51,7 @@ namespace HackerrankChallenges.ChallengesSolutions
             {
                 int daysForInvestor = Math.Abs(firstDay[i] - lastDay[i]);
                 int position = differencesCount[daysForInvestor] - 1;
+
                 investorsSortedByPriority[position] = (i, daysForInvestor);
 
                 differencesCount[daysForInvestor]--;
