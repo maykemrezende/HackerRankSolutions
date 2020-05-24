@@ -65,6 +65,6 @@ namespace HackerrankChallenges.ChallengesSolutions
             }
 
             return investorsSortedByPriority;
-        }
+        }        
     }
 }
