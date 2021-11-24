@@ -9,6 +9,98 @@ namespace HackerrankChallenges.ChallengesSolutions
     static class Solutions
     {
 
+        public static int hurdleRace(int k, List<int> height)
+        {
+            var naturalJumpMax = k;
+
+            var tallest = height.Max();
+
+            if (tallest <= naturalJumpMax)
+                return 0;
+
+            return tallest - naturalJumpMax;
+        }
+
+
+        public static int countingValleys(int steps, string path)
+        {
+            if (steps == 2)
+            {
+                if (path[0] == 'D' && path[1] == 'U')
+                    return 1;
+                else if (path[0] == 'U' && path[1] == 'D')
+                    return 0;
+            }
+
+            var seaLevel = 0;
+            var valleyCount = 0;
+
+
+            var level = 0;
+
+
+            for (int step = 0; step < steps; step++)
+            {
+                var stepDirection = path[step];
+
+                if (stepDirection == 'U')
+                {
+                    ++level;
+
+                    if (level == seaLevel)
+                        ++valleyCount;
+                }
+                else if (stepDirection == 'D')
+                    --level;
+
+            }
+
+            return valleyCount;
+        }
+
+        public static void bonAppetit(List<int> bill, int k, int b)
+        {
+            var annaChargedMoney = b;
+            var itemDoestEated = k;
+
+
+            var realBill = IgnoreItemAtPosition(itemDoestEated, bill).ToList();
+
+            var totalPaid = realBill.Sum();
+            var totalPaidByAnna = totalPaid / 2;
+
+            if (totalPaidByAnna == annaChargedMoney)
+                Console.WriteLine("Bon Appetit");
+            else if (totalPaidByAnna < annaChargedMoney)
+                Console.WriteLine(annaChargedMoney - totalPaidByAnna);
+
+        }
+
+        public static IEnumerable<int> IgnoreItemAtPosition(int position, List<int> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (i != position)
+                    yield return list[i];
+            }
+        }
+
+        public static List<List<int>> InvertImage(List<List<int>> image)
+        {
+            var returning = new List<List<int>>();
+
+
+            for (int row = image.Count - 1; row >= 0; row--)
+            {
+                var position = image[row];
+
+                position.Reverse();
+                returning.Add(position);
+            }
+
+            return returning;
+        }
+
         public static int SquaresBestSolution(int a, int b)
         => (int)Math.Floor(Math.Sqrt(b)) - (int)Math.Ceiling(Math.Sqrt(a)) + 1;
 
